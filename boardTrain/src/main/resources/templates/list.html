@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+</head>
+<body>
+	<h1>gd</h1>
+	[[${dataList}]]
+    <div th:if="${#strings.isEmpty(dataList)}">
+        <div>
+            <p>등록된 글이 없음.</p>
+        </div>
+    </div>
+    <div th:unless="${#strings.isEmpty(dataList)}">
+        <div th:each="article:${dataList}">
+            <p>[[${article.id}]]</p>
+            <a th:href="@{/board/view(no=${article.id})}">[[${article.title}]]</a>
+            <p>[[${article.writeId}]]</p>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
